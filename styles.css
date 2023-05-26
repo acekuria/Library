@@ -379,13 +379,14 @@ h1 {
   align-items: center;
 }
 
-svg {
+.curly {
   width: clamp(20px, 60%, 150px);
   
 }
 
 .book-shelf{
   fill: var(--tertiary-color);
+  width: clamp(30px, 70%, 120px);
 }
 
 
