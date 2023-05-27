@@ -358,6 +358,12 @@ body {
   background-color: var(--primary-color);
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 header {
   
   display: flex;
@@ -374,7 +380,7 @@ h1 {
    font-size: clamp(2rem, 6vw, 4rem);
 }
 
-.title {
+.heading {
   display: flex;
   align-items: center;
 }
@@ -389,9 +395,40 @@ h1 {
   width: clamp(30px, 70%, 120px);
 }
 
-
-
 .curly-end {
   /* flip on x axis */
   transform: scaleX(-1); 
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.add-book {
+  font-size: clamp(1rem, 4vw, 3rem);
+  background-color: var(--secondary-color);
+  border: 1px dashed white;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+form {
+  width: clamp(300px, 40vw, 600px) ;
+  height: clamp(100px, 50vh, 400px);
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+form > div {
+  display: flex;
+  gap: 20px;
 }
