@@ -362,6 +362,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 header {
@@ -418,10 +419,8 @@ main {
 
 }
 
-.form {
-  width: 0;
-  height:0;
-  opacity: 0;
+.form-hide {
+  display: none;
 }
 
  .formShow {
@@ -446,12 +445,19 @@ form > div {
 
 .library {
   display: grid;
-  grid-template-columns: ();
+  grid-template-columns: repeat(autofill, minmax(240px, 260px));
   width: 80vw;
-  height: 700px;
+  gap: 20px;
+  height: 600px;
+  border: 1px solid red;
 }
 
 .book-card {
-  height: 100px;
-  width: 400px;
+  height: 300px;
+  background-color:var(--secondary-color);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
