@@ -1,11 +1,8 @@
 
 let myLibrary = [];
 
-let title = document.querySelector('title').textContent;
-let author = document.querySelector('author').textContent;
-let noOfPages = document.querySelector('noOfPages').textContent;
-let isRead = document.querySelector('isRead').textContent;
-let submitButton = document.querySelector('submit');
+// let submitButton = document.querySelector('.submit');
+let form = document.querySelector('form');
 
 function Book (title, author, noOfPages, isRead) {
   this.title = title;
@@ -14,10 +11,8 @@ function Book (title, author, noOfPages, isRead) {
   this.isRead = isRead;
 }
 
-submitButton.addEventListener('click', function (e) {
-  let book = new Book(this.title, this.author, this.noOfPages, this.isRead)
-})
-
+form.addEventListener('submit', addBookToLibrary)
+console.log(myLibrary);
 
 // Book.prototype.info = function () {
   // return `The ${this.title} by ${this.author}, ${this.noOfPages}, ${this.isRead} `
@@ -25,6 +20,19 @@ submitButton.addEventListener('click', function (e) {
 
 
 
-function addBookToLibrary () {
-  return myLibrary += 
+function addBookToLibrary (e) {
+  e.preventDefault();
+
+
+  let title = document.querySelector('#title').value;
+  let author = document.querySelector('#author').value;
+  let noOfPages = document.querySelector('#pages').value;
+  let isRead = document.querySelector('#read').checked;
+
+  let book = new Book(title, author, noOfPages, isRead);
+
+  myLibrary.push(book);
+  console.log(myLibrary);
+
+  form.reset();
 }
