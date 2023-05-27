@@ -1,7 +1,9 @@
 
 let myLibrary = [];
 
-// let submitButton = document.querySelector('.submit');
+let addBook = document.querySelector('.add-book');
+let libraryGrid = document.querySelector('.library')
+
 let form = document.querySelector('form');
 
 function Book (title, author, noOfPages, isRead) {
@@ -11,18 +13,17 @@ function Book (title, author, noOfPages, isRead) {
   this.isRead = isRead;
 }
 
-form.addEventListener('submit', addBookToLibrary)
-console.log(myLibrary);
+addBook.addEventListener('click', function (e) {
+  form.classList.remove('form')
+  form.classList.add('formShow');
+  
+})
 
-// Book.prototype.info = function () {
-  // return `The ${this.title} by ${this.author}, ${this.noOfPages}, ${this.isRead} `
-// }
 
 
 
 function addBookToLibrary (e) {
   e.preventDefault();
-
 
   let title = document.querySelector('#title').value;
   let author = document.querySelector('#author').value;
@@ -36,3 +37,12 @@ function addBookToLibrary (e) {
 
   form.reset();
 }
+
+form.addEventListener('submit', addBookToLibrary)
+
+function displayBook () {
+  let bookCard = document.createElement(div)
+  bookCard.classList.add('book-card')
+  libraryGrid.appendChild(bookCard)
+}
+

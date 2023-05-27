@@ -418,7 +418,13 @@ main {
 
 }
 
-form {
+.form {
+  width: 0;
+  height:0;
+  opacity: 0;
+}
+
+ .formShow {
   width: clamp(300px, 40vw, 600px) ;
   height: clamp(100px, 50vh, 400px);
   background-color: var(--secondary-color);
@@ -426,9 +432,26 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  opacity: 1;
+  border-radius: 20px;
 }
+
+
+
 
 form > div {
   display: flex;
   gap: 20px;
+}
+
+.library {
+  display: grid;
+  grid-template-columns: ();
+  width: 80vw;
+  height: 700px;
+}
+
+.book-card {
+  height: 100px;
+  width: 400px;
 }
