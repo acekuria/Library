@@ -40,8 +40,10 @@ function displayBook () {
 
 }
 
-form.addEventListener('submit', addBookToLibrary)
-form.addEventListener('submit', displayBook)
+form.addEventListener('submit', function (e) {
+  addBookToLibrary(e);
+  displayBook();
+})
 
 function hideForm () {
   form.classList.add('form')
