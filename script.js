@@ -58,9 +58,11 @@ function displayBook () {
     let readElement = document.createElement('p');
     if (book.isRead === true) {
       readElement.textContent = 'Have I read it?:   Yes';
+      readElement.classList.add('green')
     }
     else {
       readElement.textContent = 'Have I read it?: No ';
+      readElement.classList.add('red')
     }
     
     bookCard.appendChild(readElement); 
@@ -98,6 +100,7 @@ document.addEventListener('click', handleClickOutside);
 function removeButtonFunction(book, bookCard) {
   let removeButton = document.createElement('button');
   removeButton.textContent = 'Remove';
+  removeButton.classList.add('remove')
   bookCard.appendChild(removeButton);
   
   removeButton.addEventListener('click', function () {
