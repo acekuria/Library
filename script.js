@@ -65,6 +65,7 @@ function displayBook () {
     
     bookCard.appendChild(readElement); 
     
+    removeButtonFunction(book, bookCard);
     
   }
 
@@ -91,5 +92,19 @@ function handleClickOutside (event) {
   }
 }
 
-document.addEventListener('click', handleClickOutside)
+document.addEventListener('click', handleClickOutside);
 
+
+function removeButtonFunction(book, bookCard) {
+  let removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  bookCard.appendChild(removeButton);
+  
+  removeButton.addEventListener('click', function () {
+    const index = myLibrary.indexOf(book);
+    
+      myLibrary.splice(index, 1);
+      displayBook();
+    
+  });
+}

@@ -454,7 +454,8 @@ form > div {
 }
 
 .book-card {
-  height: 200px;
+  height: auto;
+  padding: 10px;
   background-color:var(--secondary-color);
   border-radius: 20px;
   display: flex;
