@@ -464,6 +464,7 @@ form > div {
   justify-content: space-around;
   font-family: 'Montserrat', sans-serif;
   font-family: 'Poppins', sans-serif;
+  gap: 20px;
 }
 
 .container-form-show {

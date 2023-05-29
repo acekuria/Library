@@ -12,6 +12,10 @@ function Book (title, author, noOfPages, isRead) {
   this.isRead = isRead;
 }
 
+Book.prototype.toggleReadStatus = function() {
+  this.isRead = !this.isRead;
+}
+
 addBook.addEventListener('click', function (e) {
   showForm(); 
 })
@@ -55,7 +59,7 @@ function displayBook () {
     }
     bookCard.appendChild(pagesElement);
 
-    let readElement = document.createElement('p');
+    let readElement = document.createElement('button');
     if (book.isRead === true) {
       readElement.textContent = 'Have I read it?:   Yes';
       readElement.classList.add('green')
@@ -65,6 +69,11 @@ function displayBook () {
       readElement.classList.add('red')
     }
     
+    readElement.addEventListener('click', function () {
+      book.toggleReadStatus();
+      displayBook();
+    })
+
     bookCard.appendChild(readElement); 
     
     removeButtonFunction(book, bookCard);
