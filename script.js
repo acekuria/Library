@@ -1,8 +1,9 @@
 
 let myLibrary = [];
 let addBook = document.querySelector('.add-book');
-let libraryGrid = document.querySelector('.library')
+let libraryGrid = document.querySelector('.library');
 let form = document.querySelector('form');
+let container = document.querySelector('.container');
 
 function Book (title, author, noOfPages, isRead) {
   this.title = title;
@@ -31,11 +32,40 @@ function addBookToLibrary (e) {
 
 function displayBook () {
   libraryGrid.innerText = '';
-  for (let book in myLibrary) {
+  for (let book of myLibrary) {
     let bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
     libraryGrid.appendChild(bookCard);
-    bookCard.innerText = 898;
+    
+    let titleElement = document.createElement('h3');
+    titleElement.textContent = book.title;
+    titleElement.textContent.toUpperCase;
+    bookCard.appendChild(titleElement);
+
+    let authorElement = document.createElement('p');
+    authorElement.textContent = 'Author: ' + book.author;
+    bookCard.appendChild(authorElement);
+
+    let pagesElement = document.createElement('p');
+    if (book.noOfPages === '') {
+      pagesElement.textContent = 'Pages: 🤨';
+    }
+    else {
+      pagesElement.textContent = 'Number of Pages: ' + book.noOfPages;
+    }
+    bookCard.appendChild(pagesElement);
+
+    let readElement = document.createElement('p');
+    if (book.isRead === true) {
+      readElement.textContent = 'Have I read it?:   Yes';
+    }
+    else {
+      readElement.textContent = 'Have I read it?: No ';
+    }
+    
+    bookCard.appendChild(readElement); 
+    
+    
   }
 
 }
@@ -47,12 +77,12 @@ form.addEventListener('submit', function (e) {
 
 function hideForm () {
   form.classList.add('form')
-  form.classList.remove('formShow');
+  form.classList.remove('form-show');
 }
 
 function showForm () {
   form.classList.remove('form')
-  form.classList.add('formShow');
+  form.classList.add('form-show');
 }
 
 function handleClickOutside (event) {

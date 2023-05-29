@@ -424,7 +424,9 @@ main {
   display: none;
 }
 
- .formShow {
+ .form-show {
+  position: absolute;
+  top: 300px;
   width: clamp(300px, 40vw, 600px) ;
   height: clamp(100px, 50vh, 400px);
   background-color: var(--secondary-color);
@@ -432,11 +434,8 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  opacity: 1;
   border-radius: 20px;
 }
-
-
 
 
 form > div {
@@ -462,26 +461,10 @@ form > div {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* 
-
-.library {
-  display: grid;
-  grid-template-columns: 240px 240px 240px;
-  grid-template-rows: 240px 240px 240px;
-  width: 80vw;
-  gap: 20px;
-  height: 600px;
-  border: 1px solid red;
+.container-form-show {
+  filter: brightness(0.5); /* Reduce the visibility of the container */
 }
-
-.book-card {
-  width: 240px;
-  background-color:var(--secondary-color);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-} */
