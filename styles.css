@@ -424,6 +424,10 @@ main {
   display: none;
 }
 
+body.emphasized {
+  filter: brightness(30%);
+}
+
  .form-show {
   position: absolute;
   top: 300px;
@@ -435,6 +439,7 @@ main {
   align-items: center;
   justify-content: space-around;
   border-radius: 20px;
+  filter: none;
 }
 
 
@@ -467,9 +472,9 @@ form > div {
   gap: 20px;
 }
 
-.container-form-show {
-  filter: brightness(0.5); /* Reduce the visibility of the container */
-}
+ /* .emphasized{
+  background-color: brightness(0.5); /* Reduce the visibility of the container 
+ }   */
 
 .remove {
   border: 1px solid red ;

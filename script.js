@@ -5,7 +5,7 @@ let libraryGrid = document.querySelector('.library');
 let form = document.querySelector('form');
 let container = document.querySelector('.container');
 
-function Book (title, author, noOfPages, isRead) {
+function Book(title, author, noOfPages, isRead) {
   this.title = title;
   this.author = author;
   this.noOfPages = noOfPages;
@@ -14,13 +14,14 @@ function Book (title, author, noOfPages, isRead) {
 
 Book.prototype.toggleReadStatus = function() {
   this.isRead = !this.isRead;
-}
+};
 
-addBook.addEventListener('click', function (e) {
-  showForm(); 
-})
+addBook.addEventListener('click', function(e) {
+  showForm();
+  // emphasizeForm();
+});
 
-function addBookToLibrary (e) {
+function addBookToLibrary(e) {
   e.preventDefault();
 
   let title = document.querySelector('#title').value;
@@ -32,15 +33,17 @@ function addBookToLibrary (e) {
   myLibrary.push(book);
   form.reset();
   hideForm();
+  // removeEmphasis();
+  displayBook();
 }
 
-function displayBook () {
-  libraryGrid.innerText = '';
+function displayBook() {
+  libraryGrid.innerHTML = '';
   for (let book of myLibrary) {
     let bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
     libraryGrid.appendChild(bookCard);
-    
+
     let titleElement = document.createElement('h3');
     titleElement.textContent = book.title;
     titleElement.textContent.toUpperCase;
@@ -53,70 +56,71 @@ function displayBook () {
     let pagesElement = document.createElement('p');
     if (book.noOfPages === '') {
       pagesElement.textContent = 'Pages: 🤨';
-    }
-    else {
+    } else {
       pagesElement.textContent = 'Number of Pages: ' + book.noOfPages;
     }
     bookCard.appendChild(pagesElement);
 
     let readElement = document.createElement('button');
     if (book.isRead === true) {
-      readElement.textContent = 'Have I read it?:   Yes';
-      readElement.classList.add('green')
-    }
-    else {
+      readElement.textContent = 'Have I read it?: Yes';
+      readElement.classList.add('green');
+    } else {
       readElement.textContent = 'Have I read it?: No ';
-      readElement.classList.add('red')
+      readElement.classList.add('red');
     }
-    
-    readElement.addEventListener('click', function () {
+
+    readElement.addEventListener('click', function() {
       book.toggleReadStatus();
       displayBook();
-    })
+    });
 
-    bookCard.appendChild(readElement); 
-    
+    bookCard.appendChild(readElement);
+
     removeButtonFunction(book, bookCard);
-    
   }
-
 }
 
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', function(e) {
   addBookToLibrary(e);
-  displayBook();
-})
+});
 
-function hideForm () {
-  form.classList.add('form')
+function hideForm() {
+  form.classList.add('form');
   form.classList.remove('form-show');
 }
 
-function showForm () {
-  form.classList.remove('form')
+function showForm() {
+  form.classList.remove('form');
   form.classList.add('form-show');
 }
 
-function handleClickOutside (event) {
-  if(!form.contains(event.target) && !addBook.contains(event.target)) {
+function handleClickOutside(event) {
+  if (!form.contains(event.target) && !addBook.contains(event.target)) {
     hideForm();
+    // removeEmphasis();
   }
 }
 
 document.addEventListener('click', handleClickOutside);
 
-
 function removeButtonFunction(book, bookCard) {
   let removeButton = document.createElement('button');
   removeButton.textContent = 'Remove';
-  removeButton.classList.add('remove')
+  removeButton.classList.add('remove');
   bookCard.appendChild(removeButton);
-  
-  removeButton.addEventListener('click', function () {
+
+  removeButton.addEventListener('click', function() {
     const index = myLibrary.indexOf(book);
-    
-      myLibrary.splice(index, 1);
-      displayBook();
-    
+    myLibrary.splice(index, 1);
+    displayBook();
   });
 }
+
+// function emphasizeForm() {
+//   container.classList.add('emphasized');
+// }
+
+// function removeEmphasis() {
+//   container.classList.remove('emphasized');
+// }
