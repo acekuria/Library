@@ -440,8 +440,8 @@ body.emphasized {
   justify-content: space-around;
   border-radius: 20px;
   filter: none;
+  
 }
-
 
 form > div {
   display: flex;
@@ -497,4 +497,29 @@ form > div {
   border-radius: 20px;
   filter: brightness(.7);
   padding: 10px;
+}
+
+.no-error{
+  border-color:var(--primary-color);
+  
+}
+
+.error {
+  border-color: red;
+}
+
+input {
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 10px
+}
+
+input::placeholder {
+  color: black;
+  font-size: 1.2rem;
+}
+
+input:not(:placeholder-shown) {
+  font-size: 1.2rem;
+
 }

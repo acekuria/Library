@@ -5,16 +5,17 @@ let libraryGrid = document.querySelector('.library');
 let form = document.querySelector('form');
 let container = document.querySelector('.container');
 
-function Book(title, author, noOfPages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.noOfPages = noOfPages;
-  this.isRead = isRead;
+class Book {
+  constructor (title, author, noOfPages, isRead ) {
+    this.title = title;
+    this.author = author;
+    this.noOfPages = noOfPages;
+    this.isRead = isRead;
+  }
+  toggleReadStatus () {
+    this.isRead = !this.isRead;
+  };
 }
-
-Book.prototype.toggleReadStatus = function() {
-  this.isRead = !this.isRead;
-};
 
 addBook.addEventListener('click', function(e) {
   showForm();
@@ -78,13 +79,10 @@ function displayBook() {
     bookCard.appendChild(readElement);
 
     removeButtonFunction(book, bookCard);
+
+   
   }
 }
-
-form.addEventListener('submit', function(e) {
-  addBookToLibrary(e);
-});
-
 function hideForm() {
   form.classList.add('form');
   form.classList.remove('form-show');
@@ -117,10 +115,44 @@ function removeButtonFunction(book, bookCard) {
   });
 }
 
-// function emphasizeForm() {
-//   container.classList.add('emphasized');
-// }
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
 
-// function removeEmphasis() {
-//   container.classList.remove('emphasized');
-// }
+const error = (input) => {
+    if (input.validity.tooShort) {
+      input.setCustomValidity('This is too short!')
+    }
+    else if (input.validity.tooLong) {
+      input.setCustomValidity('This is too long!')
+    }
+    else {
+      input.setCustomValidity('')
+    }
+}
+
+title.addEventListener('input', function () {
+  error(title);
+  if (!title.validity.valid) {
+    title.className = 'error'
+  }
+  if (title.validity.valid) {
+    title.className = 'no-error'
+  }
+});
+
+author.addEventListener('input', function () {
+  error(author);
+  if (!author.validity.valid) {
+    author.className = 'error'
+  }
+  if (author.validity.valid) {
+    author.className = 'no-error'
+  }
+});
+
+
+form.addEventListener('submit', function(e) {
+
+  addBookToLibrary(e);
+});
+  
